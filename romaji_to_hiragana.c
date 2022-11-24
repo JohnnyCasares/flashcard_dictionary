@@ -1,7 +1,17 @@
-#include "functions.h"
+
+#include <stdlib.h>
 #include <string.h>
 #define HIRAGANA_SIZE 16
-char romaji_to_hiragana(char word[]) {
+
+void romaji_to_hiragana(
+    char word[], char **save_to) { // receives two arrays, one with the input
+                                   // word and the pointer to where the hiragana
+                                   // converstion should be saved to
+
+  char *individual_hiragana = malloc(sizeof("あ"));
+  char *complete_hiragana = malloc(18 * sizeof("あ") + 1);
+  complete_hiragana[0] = '\0';
+  char *result;
   int consonant = 0;
   // flags
   // char to string
@@ -97,10 +107,18 @@ char romaji_to_hiragana(char word[]) {
         break;
       }
     }
-    printf("%s", hiragana[row][column]);
+    // individual_hiragana = malloc(sizeof(hiragana[row][column]));
+    strcpy(individual_hiragana, hiragana[row][column]);
+    // printf("%s", individual_hiragana);
+    // use word to hiragana and
+
+    strcat(complete_hiragana, individual_hiragana);
+
     consonant = 0;
   }
 
-  char *word_to_hiragana;
-  return *word_to_hiragana;
+  printf("%s\n", complete_hiragana);
+  // printf("%li\n", strlen(complete_hiragana));
+
+  *save_to = strdup(complete_hiragana);
 }
