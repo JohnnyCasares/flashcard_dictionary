@@ -92,6 +92,16 @@ void romaji_to_hiragana(
         charString[0] = word[++word_index];
         column = 6;
         // handle h in the word
+      } else if (word[word_index] == 'h') {
+
+        // if previous char was t, then column = 6
+        if (word[word_index - 1] == 't') {
+
+          column = 6;
+        }
+        charString[0] = word[++word_index];
+        // handle especial case tsu
+
       } else if (word[word_index] == 's') {
 
         if (word[word_index - 1] == 't') {
