@@ -9,7 +9,7 @@ void romaji_to_hiragana(
                       // word and the pointer to pointer to where the hiragana
                       // converstion should be saved to
 
-  char *individual_hiragana = (char *)malloc(sizeof("あ"));
+  char *individual_hiragana = (char *)malloc(sizeof("ああ"));
   char *complete_hiragana = (char *)malloc(18 * sizeof("あ") + 1);
   complete_hiragana[0] = '\0';
   char *result;
@@ -57,7 +57,7 @@ void romaji_to_hiragana(
       // convert chars from word to string
       if (word[word_index] == 'c') {
         if (word[word_index + 1] == 'h') {
-          hflag = 1;
+          word[word_index + 1] = 'y';
         }
         word[word_index] = 't';
       }
@@ -92,16 +92,6 @@ void romaji_to_hiragana(
         charString[0] = word[++word_index];
         column = 6;
         // handle h in the word
-      } else if (word[word_index] == 'h') {
-
-        // if previous char was t, then column = 6
-        if (word[word_index - 1] == 't') {
-
-          column = 6;
-        }
-        charString[0] = word[++word_index];
-        // handle especial case tsu
-
       } else if (word[word_index] == 's') {
 
         if (word[word_index - 1] == 't') {
