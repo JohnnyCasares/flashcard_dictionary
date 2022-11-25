@@ -4,12 +4,13 @@
 #define HIRAGANA_SIZE 16
 
 void romaji_to_hiragana(
-    char word[], char **save_to) { // receives two arrays, one with the input
-                                   // word and the pointer to where the hiragana
-                                   // converstion should be saved to
+    char word[],
+    char **save_to) { // receives two arrays, one with the input
+                      // word and the pointer to pointer to where the hiragana
+                      // converstion should be saved to
 
-  char *individual_hiragana = malloc(sizeof("あ"));
-  char *complete_hiragana = malloc(18 * sizeof("あ") + 1);
+  char *individual_hiragana = (char *)malloc(sizeof("あ"));
+  char *complete_hiragana = (char *)malloc(18 * sizeof("あ") + 1);
   complete_hiragana[0] = '\0';
   char *result;
   int consonant = 0;
@@ -17,7 +18,7 @@ void romaji_to_hiragana(
   // char to string
   char charString[2] = {' ', '\0'};
   // char to string
-  char *hiragana[16][9] = {
+  char *hiragana[HIRAGANA_SIZE][9] = {
       // a    i   u   e   o   ya    yu    yo
       {"\0", "a", "i", "u", "e", "o", "a", "u", "o"},
       {"\0", "あ", "い", "う", "え", "お", "\0", "\0", "\0"}, // vowels
@@ -45,8 +46,9 @@ void romaji_to_hiragana(
 
   };
 
-  int row;
-  int column;
+  int row = 0;
+  int column = 0;
+  int hflag = 0;
   // int word_index;
   int word_index;
   // for loop for word index.
@@ -54,11 +56,15 @@ void romaji_to_hiragana(
     for (row = 0; row < HIRAGANA_SIZE; row++) {
       // convert chars from word to string
       if (word[word_index] == 'c') {
+        if (word[word_index + 1] == 'h') {
+          hflag = 1;
+        }
         word[word_index] = 't';
       }
       if (word[word_index] == 'f') {
         word[word_index] = 'h';
       }
+
       charString[0] = word[word_index]; // word index
       // if charString is c, then interpret it as t
 
@@ -74,6 +80,7 @@ void romaji_to_hiragana(
     if (consonant != 1) {
       row = 1;
     }
+    // printf("row %d column %d\n", row, column);
 
     // scans first row the the vowels and others are found
     // it should only scan 6 to 9 if there is a consonant before
@@ -86,6 +93,7 @@ void romaji_to_hiragana(
         column = 6;
         // handle h in the word
       } else if (word[word_index] == 'h') {
+
         // if previous char was t, then column = 6
         if (word[word_index - 1] == 't') {
 
@@ -93,8 +101,10 @@ void romaji_to_hiragana(
         }
         charString[0] = word[++word_index];
         // handle especial case tsu
-      } else if (word[word_index - 1] == 't') {
-        if (word[word_index] == 's') {
+
+      } else if (word[word_index] == 's') {
+
+        if (word[word_index - 1] == 't') {
           charString[0] = word[++word_index];
         }
 
@@ -109,7 +119,7 @@ void romaji_to_hiragana(
     }
     // individual_hiragana = malloc(sizeof(hiragana[row][column]));
     strcpy(individual_hiragana, hiragana[row][column]);
-    // printf("%s", individual_hiragana);
+
     // use word to hiragana and
 
     strcat(complete_hiragana, individual_hiragana);
@@ -117,7 +127,7 @@ void romaji_to_hiragana(
     consonant = 0;
   }
 
-  printf("%s\n", complete_hiragana);
+  // printf("%s\n", complete_hiragana);
   // printf("%li\n", strlen(complete_hiragana));
 
   *save_to = strdup(complete_hiragana);
