@@ -74,7 +74,7 @@ LOOP:
     DEFINE:
       printf("Your word is: %s (%s)\n", hiragana, word);
       printf("Add its definition: ");
-      char input[200];
+      char input[300];
       scanner(input);
       meaning = strdup(input);
 
