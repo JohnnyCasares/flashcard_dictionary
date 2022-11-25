@@ -112,16 +112,25 @@ void romaji_to_hiragana(
 
       else
         charString[0] = word[word_index]; // word index
-      // printf("%s\t", hiragana[0][column]);
+
       if (!strcmp(charString, hiragana[0][column])) {
         break;
       }
     }
-    // individual_hiragana = malloc(sizeof(hiragana[row][column]));
+    // if (!strcmp(individual_hiragana, "n")) {
+    //   individual_hiragana = strdup("ん");
+
+    // } else
+
     strcpy(individual_hiragana, hiragana[row][column]);
+    printf("%s\t", individual_hiragana);
+    if (!strcmp(individual_hiragana, "n")) {
+      strcpy(individual_hiragana, "ん");
+      printf("\n");
+    }
+    printf("%s\t", individual_hiragana);
 
-    // use word to hiragana and
-
+    // put all hiragana symbols together
     strcat(complete_hiragana, individual_hiragana);
 
     consonant = 0;
