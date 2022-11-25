@@ -123,12 +123,12 @@ void romaji_to_hiragana(
     // } else
 
     strcpy(individual_hiragana, hiragana[row][column]);
-    printf("%s\t", individual_hiragana);
+    // printf("%s\t", individual_hiragana);
     if (!strcmp(individual_hiragana, "n")) {
       strcpy(individual_hiragana, "ん");
-      printf("\n");
+      // printf("\n");
     }
-    printf("%s\t", individual_hiragana);
+    // printf("%s\t", individual_hiragana);
 
     // put all hiragana symbols together
     strcat(complete_hiragana, individual_hiragana);

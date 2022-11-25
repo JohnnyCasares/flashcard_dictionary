@@ -14,11 +14,12 @@ void file_to_array() {
 
     char *word;
     char *definition;
-    char line[200];
+    char line[400];
     while (!feof(dictFile)) {
 
       // token with comma
       // stuff before comma is word, stuff after comma is meaning
+      // add check if file is empty
       fgets(line, sizeof(line), dictFile);
       word = strtok(line, ",");
       definition = strtok(NULL, "\n");

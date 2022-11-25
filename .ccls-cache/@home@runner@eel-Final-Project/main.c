@@ -16,6 +16,9 @@ void scanner(char line[]) {
   char c;
   int index = 0;
   while ((c = getchar()) != '\n') {
+    if (c >= 'A' && c <= 'Z') {
+      c = c + 32;
+    }
     line[index++] = c;
   }
   line[index] = '\0';
@@ -65,7 +68,7 @@ LOOP:
   } else {
 
     // not found
-    printf("Word not found. Do you wish to add it to the dictionary? ");
+    printf("Word not found. Do you wish to add it to the dictionary?(yes/no) ");
     scanner(answer);
 
     if (!strcmp(answer, "yes")) {
@@ -73,7 +76,7 @@ LOOP:
 
     DEFINE:
       printf("Your word is: %s (%s)\n", hiragana, word);
-      printf("Add its definition: ");
+      printf("Add its definition (up to 300 characters): ");
       char input[300];
       scanner(input);
       meaning = strdup(input);
