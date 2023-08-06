@@ -1,4 +1,4 @@
-# Flashcard Cictionary
+# Flashcard Dictionary
 Converts romaji to hiragana and stores it in a txt file for the purpose of learning and practicing the writing system used in Japan
 
 ## Overview
