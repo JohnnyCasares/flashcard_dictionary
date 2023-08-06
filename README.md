@@ -17,7 +17,6 @@ The Romaji to Hiragana Converter is a C program that allows users to input Romaj
 
 
 2. Run the executable:
-
 ./main
 
 
@@ -28,6 +27,7 @@ The Romaji to Hiragana Converter is a C program that allows users to input Romaj
 The program stores new words and their definitions in a text file called "dict.txt." Each entry in the file follows the format:
 
 sushi: A Japanese dish consisting of vinegared rice topped with raw fish or other ingredients.
+
 ramen: A Japanese dish of Chinese-style wheat noodles served in a meat or fish-based broth.
 
 
