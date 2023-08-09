@@ -51,9 +51,7 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## Contact
 
-For any questions, feedback, or collaborations, you can reach out to the project maintainer:
-
-- Johnny Casares: [johnny.casares.7@gmail.com](mailto:johnny.casares.7@gmail.com)
+For any questions or feedback, you can reach out by reporting an issue or through [LinkedIn](https://www.linkedin.com/in/johnny-casares7/)
 
 Enjoy learning and storing Romaji words in Hiragana with our program! 🇯🇵📝
 
